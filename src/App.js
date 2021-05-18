@@ -14,7 +14,7 @@ class App extends React.Component {
           <span className="Dislikes" />
         </div>
         <div className="body">
-          <MovieList />
+          <MovieList movies={["asd","asdads"]}/>
         </div>
       </div>
     )

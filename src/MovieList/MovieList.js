@@ -1,13 +1,15 @@
-import React from 'React';
+import React from 'react';
 import Movie from './MovieList.js';
 
-const MovieList = (movies) => {
-  //map each movie with the like and dislike function passed down
-  <div className="movie-list">
-    {movies.map((movie) => {
-      <Movie  />
-    })}
-  </div>
-};
+const MovieList = ({movies}) => (
+    <div className="movie-list">
+      {console.log(movies)}
+      {movies.map((movie =>
+        <div className="movie-list-entry">
+          <Movie entry={movie}/>
+        </div>
+      ))}
+    </div>
+);
 
 export default MovieList;

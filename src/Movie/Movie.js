@@ -1,8 +1,6 @@
 import React from 'React';
 
-const Movie = () => {
-  //retrieve the movie's image
-  //add buttons for like and dislike
+const Movie = ({entry}) => (
   <div className="movie-entry">
     <div className="movie-body">
       <img className="movie-image" src={} alt=""/>
@@ -10,4 +8,6 @@ const Movie = () => {
       <button></button>
     </div>
   </div>
-}
+);
+
+export default Movie;

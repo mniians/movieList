@@ -3,17 +3,10 @@ import MovieList from './MovieList/MovieList.js'
 import './App.css';
 
 const App = () => {
-  const url = 'https://developers.themoviedb.org/3/movies/get-popular-movies'
+  const url = 'https://developers.themoviedb.org/3/movies/get-popular-movies?api_key=' + process.env.REACT_APP_API_KEY;
   let [movies, addMovies] = useState([]);
   useEffect(() => {
-    fetch(url,{
-      method: "GET",
-      withCredentials: true,
-      headers: {
-        "X-Auth-Token": "",
-        "Content-Type": "application/json"
-      }
-    })
+    fetch(url)
       .then((resp) =>  resp.json())
       .then((data)) => {
         addMovies(movies = data.results);
@@ -22,6 +15,18 @@ const App = () => {
         console.log(err);
       });
   });
+
+  likeClickHandler = (event) => {
+    let movie = event.target;
+
+    movie.liked = true;
+  }
+
+  dislikeClickHandler = (event) => {
+    let movie = event.target;
+
+    movie.liked = false;
+  }
 
 
 

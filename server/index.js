@@ -17,8 +17,7 @@ app.use(cors({
     ];
     if (!origin) { return next(null, true); }
     if (allowedOrigins.indexOf(origin) === -1) {
-      const message = 'The CORS policy for this site does not \
-        allow access from the specified Origin.';
+      const message = 'The CORS policy for this site does not allow access from the specified Origin.';
       return next(new Error(message), false);
     }
     return next(null, true);
@@ -45,10 +44,22 @@ app.put('/movies/:id', (req, res) => {
 })
 
 app.get('/movies/liked', (req, res) => {
-  Movie.find()
-})
+  Movies.find({liked: true}, (error, movies) => {
+    if (error) {
+      console.log('Error finding favourite movies');
+    } else {
+      res.send(movies);
+    }
+  });
+});
 
 app.get('/movies/disliked', (req, res) => {
-  Movie.find()
-})
+  Movies.find({liked: false}, (error, movies) => {
+    if (error) {
+      console.log('Error finding most hated movies');
+    } else {
+      res.send(movies);
+    }
+  });
+});
 

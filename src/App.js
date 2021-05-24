@@ -3,26 +3,26 @@ import MovieList from './MovieList/MovieList.js'
 import './App.css';
 
 const App = () => {
-  const url = 'https://developers.themoviedb.org/3/movie/top_rated?api_key=' + process.env.REACT_APP_API_KEY + '&language=en-US&page=1';
+  const url = 'https://developers.themoviedb.org/3/movie/top_rated?api_key=' + process.env.REACT_APP_KEY + '&language=en-US&page=1';
   let [movies, addMovies] = useState([]);
   useEffect(() => {
     fetch(url)
       .then((resp) =>  resp.json())
       .then((data) => {
-        addMovies(movies = data.results);
+        addMovies(data.results);
       })
       .catch((err) => {
         console.log(err);
       })
   }, []);
 
-  likeClickHandler = (event) => {
+  const likeClickHandler = (event) => {
     let movie = event.target;
 
     movie.liked = true;
   }
 
-  dislikeClickHandler = (event) => {
+  const dislikeClickHandler = (event) => {
     let movie = event.target;
 
     movie.liked = false;

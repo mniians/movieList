@@ -17,7 +17,8 @@ let movieSchema = mongoose.Schema({
   video: Boolean,
   vote_average: Number,
   total_results: Number,
-  total_pages: Number
+  total_pages: Number,
+  liked: Schema.Types.Mixed
 });
 
 let Movie = mongoose.model('Movie', movieSchema);
